@@ -408,6 +408,11 @@ CLASS zcl_adu_messages IMPLEMENTATION.
       CLEAR sy-msgv3.
       CLEAR sy-msgv4.
     ELSE.
+
+      IF ls_message_backup-type IS INITIAL.
+        ls_message_backup-type = zif_adu_messages=>gc_severity-information.
+      ENDIF.
+
       MESSAGE ID     ls_message_backup-id
               TYPE   ls_message_backup-type
               NUMBER ls_message_backup-number
